@@ -1,27 +1,25 @@
 <?php 
-
-require(conn.php); 
-
+require("conn.php");
 $arreglo = array(
-    "sucess"=>false, 
+    "success"=>false, 
     "status"=>400,
     "data"=>"",
     "message"=>"",
     "cant" => 0
 );
 
-if($_SERVER[REQUEST_METHOD] === "GET"){ 
+if($_SERVER["REQUEST_METHOD"] === "GET"){ 
         
-        if(isset($_GET[type]) && $_GET[type] != ""){ 
+        if(isset($_GET["type"]) && $_GET["type"] != ""){ 
             
 
-            $conexion = new conexion; 
+            $conexion = new conexion;
             $conn = $conexion->conectar();
 
-            $datos = $conn->query('SELECT * from empleado'); 
-            $resultados = $datos->fetchALL(); /
+            $datos = $conn->query('SELECT * from empleado');
+            $resultados = $datos->fetchAll();
 
-            switch($_GET[type]){ 
+            switch($_GET["type"]){ 
                 case json: 
                     result_json($resultados);
                 break;
@@ -46,7 +44,7 @@ if($_SERVER[REQUEST_METHOD] === "GET"){
 }else{
    
     $arreglo = array(
-        "sucess" => false, 
+        "success" => false, 
         "status"=>array("status_code"=>405,"status_text"=>"Method Not Allowed"),
         "data"=>"",
         "message"=>"NO SE ACEPTA EL MÉTODO",

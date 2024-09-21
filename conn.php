@@ -20,7 +20,7 @@ class conexion{
             $pdo = new PDO("mysql:host={$this->host};dbname={$this->db};charset={$this->charset};port={$this->port}",$this->user,$this->pass,$this->options);
             return $pdo;
         }catch(PDOException $exp){
-            echo("HUBO UN ERROR EN LA CONEXION".$exp->getMessage()) 
+            echo("HUBO UN ERROR EN LA CONEXION".$exp->getMessage()) ;
         }
     }
 
