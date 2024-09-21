@@ -20,10 +20,10 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
             $resultados = $datos->fetchAll();
 
             switch($_GET["type"]){ 
-                case json: 
+                case "json": 
                     result_json($resultados);
                 break;
-                case xml: 
+                case "xml": 
                     result_xml($resultados);
                 break;
                 default:
@@ -32,12 +32,11 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
             }
 
         }else{
-            //NO HAY VALORES PARA EL PARAMETRO TYPE
             $arreglo = array(
                 "success" =>false,
                 "status"=>array("status_code"=>412,"status_text" => "Precondition Failed"),
                 "data"=>"",
-                "message"=>"Se esperaba el parametro 'type' con el tupo de resultado.", 
+                "message"=>"Se esperaba el parametro 'type' con el tipo de resultado. ", 
                 "cant"=>0
             );
         }
@@ -62,7 +61,7 @@ function result_json($resultado){
     );
 
     header("HTTP/1.1 ".$arreglo["status"]["status_code"]." ".$arreglo["status"]["status_text"]);
-    header("Content-Type: Application/json"); 
+    header("Content-Type: application/json"); 
     echo(json_encode($arreglo));
 }
 
