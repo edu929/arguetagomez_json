@@ -31,7 +31,9 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
                 break;
             }
 
-        }else{
+        }else
+        
+        {
             $arreglo = array(
                 "success" =>false,
                 "status"=>array("status_code"=>412,"status_text" => "Precondition Failed"),
@@ -40,7 +42,10 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
                 "cant"=>0
             );
         }
-}else{
+        
+}else
+
+{
    
     $arreglo = array(
         "success" => false, 
@@ -50,6 +55,7 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
         "cant" => 0
     );
 }
+
 
 function result_json($resultado){
     $arreglo = array(
@@ -64,6 +70,7 @@ function result_json($resultado){
     header("Content-Type: application/json"); 
     echo(json_encode($arreglo));
 }
+
 
 function result_xml($resultado){
     $xml = new SimpleXMLElement("<empleados />");
